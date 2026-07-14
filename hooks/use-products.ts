@@ -7,5 +7,7 @@ export function useProducts() {
   return useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
+
+    retry: false,
   })
 }
