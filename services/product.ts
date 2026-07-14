@@ -2,14 +2,11 @@ import { api } from "./api"
 import { Product } from "@/types/product"
 
 export async function getProducts(): Promise<Product[]> {
-  try {
-    const { data } = await api.get("/products")
+  const { data } = await api.get("/products")
+  return data.data
+}
 
-    console.log("API Response:", data)
-
-    return data.data
-  } catch (error) {
-    console.error("Axios Error:", error)
-    throw error
-  }
+export async function getProduct(id: number): Promise<Product> {
+  const { data } = await api.get(`/products/${id}`)
+  return data.data
 }
